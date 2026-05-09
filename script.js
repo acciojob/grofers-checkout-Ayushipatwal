@@ -1,5 +1,5 @@
 const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
+getSumBtn.innerText = "Get Total Price";
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
@@ -11,16 +11,15 @@ const getSum = () => {
     total += Number(price.textContent);
   });
 
-  const table = document.querySelector("table");
+  let ans = document.getElementById("ans");
 
-  const newRow = document.createElement("tr");
-  const newCell = document.createElement("td");
+  if (!ans) {
+    ans = document.createElement("h3");
+    ans.id = "ans";
+    document.body.appendChild(ans);
+  }
 
-  newCell.colSpan = "2";
-  newCell.textContent = total;
-
-  newRow.appendChild(newCell);
-  table.appendChild(newRow);
+  ans.innerText = total;
 };
 
 getSumBtn.addEventListener("click", getSum);
